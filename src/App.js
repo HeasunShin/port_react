@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './Header';
+import Banner from './Banner';
+import TabMenu from './TabMenu';
+import Article from './Article';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    // 여기서 this.setState()를 호출하면 안된다!
+    this.state = {
+      subject:{title:'Header', desc:'Header explanation'}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Header 
+          title={this.state.subject.title}
+          desc={this.state.subject.desc}
+        />
+        <Banner />
+        <TabMenu />
+        <Article title="HTML" desc="Hypertext Markup Language" />
+      </div>
+    )
+  }
 }
 
-export default App;
